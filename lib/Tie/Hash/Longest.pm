@@ -1,8 +1,8 @@
 package Tie::Hash::Longest;
 
-use strict;
+$VERSION='1.1';
 
-my $VERSION='1.0';
+use strict;
 
 sub TIEHASH {
 	my $class = shift;
@@ -30,9 +30,8 @@ sub rescan {
     $self->{KEY} = $self->{VALUE} = undef;
     foreach (keys %{$self->{CURRENT_STATE}}) {
         $self->{KEY} = $_ if(length($_) > length($self->{KEY}));
-    }
-    foreach (values %{$self->{CURRENT_STATE}}) {
-        $self->{VALUE} = $_ if(length($_) > length($self->{VALUE}));
+        $self->{VALUE} = $self->{CURRENT_STATE}->{$_}
+            if(length($self->{CURRENT_STATE}->{$_}) > length($self->{VALUE}));
     }
     $self->{RESCAN_NEEDED} = 0;
 }

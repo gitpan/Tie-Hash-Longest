@@ -1,5 +1,5 @@
 use ExtUtils::MakeMaker;
 WriteMakefile(
 		NAME	=> 'Tie::Hash::Longest',
-		VERSION => '1.0'
+		VERSION => '1.1'
 	     );
